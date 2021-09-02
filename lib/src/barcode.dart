@@ -257,8 +257,8 @@ class Barcode {
     _data = _convertData(barcodeData);
   }
 
-  BarcodeType _type;
-  List<int> _data;
+  late BarcodeType _type;
+  late List<int> _data;
 
   List<int> _convertData(List<dynamic> list) =>
       list.map((dynamic d) => d.toString().codeUnitAt(0)).toList();

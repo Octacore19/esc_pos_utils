@@ -53,8 +53,8 @@ Future<void> main() async {
   // Print image:
   final ByteData data = await rootBundle.load('assets/logo.png');
   final Uint8List imgBytes = data.buffer.asUint8List();
-  final Image image = decodeImage(imgBytes);
-  bytes += generator.image(image);
+  final Image? image = decodeImage(imgBytes);
+  if (image != null) bytes += generator.image(image);
   // Print image using an alternative (obsolette) command
   // bytes += generator.imageRaster(image);
 
