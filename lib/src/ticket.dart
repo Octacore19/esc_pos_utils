@@ -93,7 +93,7 @@ class Ticket {
     bytes += styles.turn90 ? cTurn90On.codeUnits : [];
     bytes += styles.reverse ? cReverseOn.codeUnits : [];
     bytes += styles.underline ? cUnderline1dot.codeUnits : [];
-    bytes += styles.fontType == PosFontType.fontB ? cFontB.codeUnits : [];
+    bytes += styles.fontType == PosFontType.fontB ? cFontB.codeUnits : cFontA.codeUnits;
 
     // Characters size
     if (styles.height.value != PosTextSize.size1.value ||
