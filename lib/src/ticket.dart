@@ -100,7 +100,7 @@ class Ticket {
         styles.width.value != PosTextSize.size1.value) {
       bytes += Uint8List.fromList(
         List.from(cSizeGSn.codeUnits)
-          ..add(PosTextSize.decSize(styles.height, styles.width)),
+          ..add(PosTextSizes.decSize(styles.height, styles.width)),
       );
     }
 
