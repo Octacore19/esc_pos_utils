@@ -23,11 +23,11 @@ class Ticket {
   }
 
   List<int> bytes = [];
-  PosCodeTable _codeTable;
+  PosCodeTable? _codeTable;
   final PaperSize _paperSize;
 
   /// Set global code table which will be used instead of the default printer's code table
-  void setGlobalCodeTable(PosCodeTable codeTable) {
+  void setGlobalCodeTable(PosCodeTable? codeTable) {
     _codeTable = codeTable;
     if (codeTable != null) {
       bytes += Uint8List.fromList(
@@ -119,7 +119,7 @@ class Ticket {
     // Set local code table
     if (styles.codeTable != null) {
       bytes += Uint8List.fromList(
-        List.from(cCodeTable.codeUnits)..add(styles.codeTable.value),
+        List.from(cCodeTable.codeUnits)..add(styles.codeTable!.value),
       );
     }
 
@@ -220,7 +220,7 @@ class Ticket {
   ///
   /// If [codeTable] is null, global code table is used.
   /// If global code table is null, default printer code table is used.
-  void codeTable({PosCodeTable codeTable}) {
+  void codeTable({PosCodeTable? codeTable}) {
     bytes += cKanjiOff.codeUnits;
 
     if (codeTable != null) {
@@ -256,7 +256,7 @@ class Ticket {
       if (!cols[i].containsChinese) {
         _text(
           cols[i].textEncoded != null
-              ? cols[i].textEncoded
+              ? cols[i].textEncoded!
               : _encode(cols[i].text),
           styles: cols[i].styles,
           colInd: colInd,
@@ -563,9 +563,9 @@ class Ticket {
   /// Width, height, font, text position settings are effective until performing of ESC @, reset or power-off.
   void barcode(
     Barcode barcode, {
-    int width,
-    int height,
-    BarcodeFont font,
+    int? width,
+    int? height,
+    BarcodeFont? font,
     BarcodeText textPos = BarcodeText.below,
     PosAlign align = PosAlign.center,
   }) {
@@ -592,13 +592,13 @@ class Ticket {
         : (align == PosAlign.center ? cAlignCenter : cAlignRight));
 
     // Print barcode
-    final header = cBarcodePrint.codeUnits + [barcode.type.value];
-    if (barcode.type.value <= 6) {
+    final header = cBarcodePrint.codeUnits + [barcode.type!.value];
+    if (barcode.type!.value <= 6) {
       // Function A
-      bytes += header + barcode.data + [0];
+      bytes += header + barcode.data! + [0];
     } else {
       // Function B
-      bytes += header + [barcode.data.length] + barcode.data;
+      bytes += header + [barcode.data!.length] + barcode.data!;
     }
   }
 
