@@ -20,7 +20,7 @@ enum PosTextSize { size1, size2, size3, size4, size5, size6, size7, size8 }
 
 class PosTextSizes {
   static int decSize(PosTextSize height, PosTextSize width) =>
-      2 * (width.value - 1) + (height.value - 1);
+      16 * (width.value - 1) + (height.value - 1);
 }
 
 extension PosTextSizeExtension on PosTextSize {
