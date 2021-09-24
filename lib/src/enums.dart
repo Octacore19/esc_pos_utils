@@ -16,24 +16,47 @@ enum PosDrawer { pin2, pin5 }
 /// graphics: GS ( L
 enum PosImageFn { bitImageRaster, graphics }
 
-class PosTextSize {
-  const PosTextSize._internal(this.value);
-  final int value;
-  static const size1 = PosTextSize._internal(1);
-  static const size2 = PosTextSize._internal(2);
-  static const size3 = PosTextSize._internal(3);
-  static const size4 = PosTextSize._internal(4);
-  static const size5 = PosTextSize._internal(5);
-  static const size6 = PosTextSize._internal(6);
-  static const size7 = PosTextSize._internal(7);
-  static const size8 = PosTextSize._internal(8);
+enum PosTextSize {
+  size1,
+  size2,
+  size3,
+  size4,
+  size5,
+  size6,
+  size7,
+  size8,
+}
 
+extension PosTextSizeExt on PosTextSize {
+  
   static int decSize(PosTextSize height, PosTextSize width) =>
       16 * (width.value - 1) + (height.value - 1);
+
+  int get value {
+    switch (this) {
+      case PosTextSize.size1:
+        return 1;
+      case PosTextSize.size2:
+        return 2;
+      case PosTextSize.size3:
+        return 3;
+      case PosTextSize.size4:
+        return 4;
+      case PosTextSize.size5:
+        return 5;
+      case PosTextSize.size6:
+        return 6;
+      case PosTextSize.size7:
+        return 7;
+      case PosTextSize.size8:
+        return 8;
+    }
+  }
 }
 
 class PaperSize {
   const PaperSize._internal(this.value);
+
   final int value;
   static const mm58 = PaperSize._internal(1);
   static const mm80 = PaperSize._internal(2);
@@ -43,6 +66,7 @@ class PaperSize {
 
 class PosBeepDuration {
   const PosBeepDuration._internal(this.value);
+
   final int value;
   static const beep50ms = PosBeepDuration._internal(1);
   static const beep100ms = PosBeepDuration._internal(2);
@@ -57,6 +81,7 @@ class PosBeepDuration {
 
 class PosCodeTable {
   const PosCodeTable(this.value);
+
   final int value;
 
   /// PC437 - U.S.A., Standard Europe
