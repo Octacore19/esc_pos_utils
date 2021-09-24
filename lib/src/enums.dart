@@ -28,7 +28,6 @@ enum PosTextSize {
 }
 
 extension PosTextSizeExt on PosTextSize {
-  
   static int decSize(PosTextSize height, PosTextSize width) =>
       16 * (width.value - 1) + (height.value - 1);
 
@@ -54,29 +53,56 @@ extension PosTextSizeExt on PosTextSize {
   }
 }
 
-class PaperSize {
-  const PaperSize._internal(this.value);
+enum PaperSize { mm58, mm80 }
 
-  final int value;
-  static const mm58 = PaperSize._internal(1);
-  static const mm80 = PaperSize._internal(2);
+extension PaperSizeExt on PaperSize {
+  int get value {
+    switch (this) {
+      case PaperSize.mm58:
+        return 1;
+      case PaperSize.mm80:
+        return 2;
+    }
+  }
 
-  int get width => value == PaperSize.mm58.value ? 350 : 512;
+  int get width => this == PaperSize.mm58 ? 350 : 512;
 }
 
-class PosBeepDuration {
-  const PosBeepDuration._internal(this.value);
+enum PosBeepDuration {
+  beep50ms,
+  beep100ms,
+  beep150ms,
+  beep200ms,
+  beep250ms,
+  beep300ms,
+  beep350ms,
+  beep400ms,
+  beep450ms,
+}
 
-  final int value;
-  static const beep50ms = PosBeepDuration._internal(1);
-  static const beep100ms = PosBeepDuration._internal(2);
-  static const beep150ms = PosBeepDuration._internal(3);
-  static const beep200ms = PosBeepDuration._internal(4);
-  static const beep250ms = PosBeepDuration._internal(5);
-  static const beep300ms = PosBeepDuration._internal(6);
-  static const beep350ms = PosBeepDuration._internal(7);
-  static const beep400ms = PosBeepDuration._internal(8);
-  static const beep450ms = PosBeepDuration._internal(9);
+extension PosBeepDurationExt on PosBeepDuration {
+  int get value {
+    switch (this) {
+      case PosBeepDuration.beep50ms:
+        return 1;
+      case PosBeepDuration.beep100ms:
+        return 2;
+      case PosBeepDuration.beep150ms:
+        return 3;
+      case PosBeepDuration.beep200ms:
+        return 4;
+      case PosBeepDuration.beep250ms:
+        return 5;
+      case PosBeepDuration.beep300ms:
+        return 6;
+      case PosBeepDuration.beep350ms:
+        return 7;
+      case PosBeepDuration.beep400ms:
+        return 8;
+      case PosBeepDuration.beep450ms:
+        return 9;
+    }
+  }
 }
 
 class PosCodeTable {
