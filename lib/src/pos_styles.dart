@@ -30,5 +30,5 @@ class PosStyles {
   final PosTextSize height;
   final PosTextSize width;
   final PosFontType fontType;
-  final PosCodeTable codeTable;
+  final PosCodeTable? codeTable;
 }
