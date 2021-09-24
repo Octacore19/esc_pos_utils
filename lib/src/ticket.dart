@@ -147,7 +147,7 @@ class Ticket {
         kanjiOff: !containsChinese,
       );
       // Ensure at least one line break after the text
-      emptyLines(linesAfter + 1);
+      emptyLines(linesAfter);
       reset();
     } else {
       _mixedKanji(text, styles: styles, linesAfter: linesAfter);
